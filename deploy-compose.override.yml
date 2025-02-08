@@ -12,3 +12,14 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
     env_file:
       - .env.workerservice.example
+
+  client:
+    image: nginx:1.27.0-alpine
+    container_name: LibreChat-NGINX
+    ports:
+      - 80:80
+    depends_on:
+      - api
+    restart: always
+    volumes:
+      - ./client/nginx.custom.conf:/etc/nginx/conf.d/default.conf
