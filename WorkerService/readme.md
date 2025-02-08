@@ -1,0 +1,1 @@
+docker compose -f .\deploy-compose.yml -f .\deploy-compose.override.yml up -d

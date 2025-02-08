@@ -1,0 +1,14 @@
+services:
+  big-agi:
+    image: ghcr.io/enricoros/big-agi:latest
+    ports:
+      - "3000:3000"
+    command: [ "next", "start", "-p", "3000" ]
+  workerservice:
+    build:
+      context: ./WorkerService/WorkerService
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    env_file:
+      - .env.workerservice.example
