@@ -87,6 +87,7 @@ services:
     ports:
       - "3000:3000"
     command: [ "next", "start", "-p", "3000" ]
+    restart: always
     
   workerservice:
     build:
@@ -96,6 +97,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
     env_file:
       - .env.workerservice
+    restart: always
 
 volumes:
   pgdata2:
